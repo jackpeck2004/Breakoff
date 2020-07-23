@@ -7,35 +7,39 @@ from utils.rounded_rect import draw_rounded_rect
 
 def main():
     # Basic Variables Setup
-    WIDTH, HEIGHT = 1080, 720
+    screen_width, screen_height = 1080, 720
     clock = pygame.time.Clock()
-    isRunning = True
+    is_running = True
 
     # Initialize Pygame
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption('Breakoff')
     pygame.init()
 
     # Main Player
 
-    PLAYER_WIDTH, PLAYER_HEIGHT = 300, 30
-    PLAYER_COLOR = colors.BLUE
+    player_width, player_height = 300, 30
+    player_color = colors.BLUE
     player = classes.RectSprite(
-        PLAYER_WIDTH, PLAYER_HEIGHT, WIDTH//2-PLAYER_WIDTH//2, HEIGHT-PLAYER_HEIGHT-PLAYER_HEIGHT//3)
+        player_width,
+        player_height,
+        screen_width // 2 - player_width // 2,
+        screen_height - player_height - player_height//3
+    )
 
     # Ball
-    BALL_DIAMETER = 50
-    ball = classes.CircleSprite(BALL_DIAMETER, WIDTH//2, HEIGHT//2)
+    ball_diameter = 50
+    ball = classes.CircleSprite(ball_diameter, screen_width//2, screen_height//2)
 
-    while isRunning:
+    while is_running:
 
         # Handle Input
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                isRunning = False
+                is_running = False
 
         # Sprite Animation
-        # ball.bounceOffBorderLeft(WIDTH, HEIGHT)
+        # ball.bounceOffBorderLeft(screen_width, screen_height)
         # ball.setXSpeed(10)
         # ball.moveXBySpeed()
 
@@ -43,7 +47,7 @@ def main():
         screen.fill(colors.BLACK)
 
         # Draw Items
-        draw_rounded_rect(screen, player.rect, PLAYER_COLOR,
+        draw_rounded_rect(screen, player.rect, player_color,
                           player.rect.height//2-2)
         ball.draw(screen, colors.WHITE)
 
