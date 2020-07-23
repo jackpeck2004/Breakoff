@@ -34,13 +34,18 @@ def main():
             if event.type == pygame.QUIT:
                 isRunning = False
 
+        # Sprite Animation
+        ball.bounceOffBorderLeft(WIDTH, HEIGHT)
+        ball.setXSpeed(10)
+        ball.moveXBySpeed()
+
         # Screen Background
         screen.fill(colors.BLACK)
 
         # Draw Items
         # draw_rounded_rect(screen, player.rect, PLAYER_COLOR,
         #                   player.rect.height//2-2)
-        # ball.draw(screen, colors.WHITE)
+        ball.draw(screen, colors.WHITE)
 
         # Display everything on the screen
         clock.tick(60)

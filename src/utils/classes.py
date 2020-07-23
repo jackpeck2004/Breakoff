@@ -6,6 +6,23 @@ class MasterSprite(pygame.sprite.Sprite):
         self.x = x
         self.y = y
 
+    def setXSeed(self, speed):
+        self.speedX = speed
+
+    def bounceOffBorderLeft(self, WIDTH, HEIGHT):
+        if (self.x >= WIDTH):
+            self.x *= -1
+
+    def bounceOffBorders(self, screen):
+        self.screen = screen
+        self.bounceOffBorderLeft(self.screen)
+        # bounceOffBorderRight(self.screen)
+        # bounceOffBorderTop(self.screen)
+
+    def moveXBySpeed(self):
+        # self.speed = speed
+        self.x += self.speedX
+
 
 class RectSprite(MasterSprite):
     def __init__(self, width, height, x, y):
