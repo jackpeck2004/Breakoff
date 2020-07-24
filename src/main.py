@@ -2,8 +2,7 @@
 
 import pygame
 from utils import colors
-from utils.classes import RectSprite, CircleSprite
-from utils.rounded_rect import draw_rounded_rect
+from utils.classes import RectSprite, RoundedRectSprite, CircleSprite
 from utils.constants import *
 import random
 
@@ -20,7 +19,7 @@ pygame.init()
 
 player_width, player_height = 300, 30
 player_color = colors.BLUE
-player = RectSprite(
+player = RoundedRectSprite(
     player_width,
     player_height,
     screen_width // 2 - player_width // 2,
@@ -28,8 +27,7 @@ player = RectSprite(
 )
 
 # Ball
-ball_diameter = 50
-
+ball_diameter = 20
 ball = CircleSprite(ball_diameter, screen_width // 2, screen_height // 2, ball_speed_x, ball_speed_y)
 
 # Main game loop
@@ -57,9 +55,9 @@ while is_running:
     screen.fill(colors.BLACK)
 
     # Draw Items
-    draw_rounded_rect(screen, player.rect, player_color,
-                      player.rect.height // 2 - 2)
-    # player.draw(screen, player_color)
+    # draw_rounded_rect(screen, player.rect, player_color,
+    #                   player.rect.height // 2 - 2)
+    player.draw(screen, player_color)
     ball.draw(screen, colors.WHITE)
 
     # Display everything on the screen

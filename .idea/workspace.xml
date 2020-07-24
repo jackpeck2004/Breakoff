@@ -19,11 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48036914-6de2-40a9-9acd-f309acc25671" name="Default Changelist" comment="Make the player stay inside the screen even when it collides with a border">
+    <list default="true" id="48036914-6de2-40a9-9acd-f309acc25671" name="Default Changelist" comment="BUG: fixed typo inside MasterSprite class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595583540761</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="BUG: fixed typo inside MasterSprite class">
+      <created>1595583632960</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1595583632960</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,7 +154,8 @@
     <MESSAGE value="added return statement to the animation method in order to check if the character is alive" />
     <MESSAGE value="refactored classes and main file so it works properly" />
     <MESSAGE value="Make the player stay inside the screen even when it collides with a border" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make the player stay inside the screen even when it collides with a border" />
+    <MESSAGE value="BUG: fixed typo inside MasterSprite class" />
+    <option name="LAST_COMMIT_MESSAGE" value="BUG: fixed typo inside MasterSprite class" />
   </component>
   <component name="WindowStateProjectService">
     <state x="624" y="278" width="800" height="717" key="#Intentions" timestamp="1595576634925">
@@ -159,33 +166,33 @@
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
     <state x="488" y="275" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2048.1180@0.23.2048.1180" timestamp="1595576525148" />
-    <state width="2027" height="149" key="GridCell.Tab.0.bottom" timestamp="1595583579777">
+    <state width="2027" height="149" key="GridCell.Tab.0.bottom" timestamp="1595583919814">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state width="2027" height="149" key="GridCell.Tab.0.bottom/0.23.2048.1180@0.23.2048.1180" timestamp="1595583579777" />
-    <state width="2027" height="149" key="GridCell.Tab.0.center" timestamp="1595583579776">
+    <state width="2027" height="149" key="GridCell.Tab.0.bottom/0.23.2048.1180@0.23.2048.1180" timestamp="1595583919814" />
+    <state width="2027" height="149" key="GridCell.Tab.0.center" timestamp="1595583919813">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state width="2027" height="149" key="GridCell.Tab.0.center/0.23.2048.1180@0.23.2048.1180" timestamp="1595583579776" />
-    <state width="2027" height="149" key="GridCell.Tab.0.left" timestamp="1595583579776">
+    <state width="2027" height="149" key="GridCell.Tab.0.center/0.23.2048.1180@0.23.2048.1180" timestamp="1595583919813" />
+    <state width="2027" height="149" key="GridCell.Tab.0.left" timestamp="1595583919813">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state width="2027" height="149" key="GridCell.Tab.0.left/0.23.2048.1180@0.23.2048.1180" timestamp="1595583579776" />
-    <state width="2027" height="149" key="GridCell.Tab.0.right" timestamp="1595583579777">
+    <state width="2027" height="149" key="GridCell.Tab.0.left/0.23.2048.1180@0.23.2048.1180" timestamp="1595583919813" />
+    <state width="2027" height="149" key="GridCell.Tab.0.right" timestamp="1595583919814">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state width="2027" height="149" key="GridCell.Tab.0.right/0.23.2048.1180@0.23.2048.1180" timestamp="1595583579777" />
+    <state width="2027" height="149" key="GridCell.Tab.0.right/0.23.2048.1180@0.23.2048.1180" timestamp="1595583919814" />
     <state x="525" y="252" key="SettingsEditor" timestamp="1595577092379">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
     <state x="525" y="252" key="SettingsEditor/0.23.2048.1180@0.23.2048.1180" timestamp="1595577092379" />
-    <state x="624" y="353" key="Vcs.Push.Dialog.v2" timestamp="1595583542085">
+    <state x="624" y="353" key="Vcs.Push.Dialog.v2" timestamp="1595583634612">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state x="624" y="353" key="Vcs.Push.Dialog.v2/0.23.2048.1180@0.23.2048.1180" timestamp="1595583542085" />
-    <state x="689" y="289" width="670" height="676" key="search.everywhere.popup" timestamp="1595583591177">
+    <state x="624" y="353" key="Vcs.Push.Dialog.v2/0.23.2048.1180@0.23.2048.1180" timestamp="1595583634612" />
+    <state x="689" y="289" width="670" height="676" key="search.everywhere.popup" timestamp="1595583673086">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state x="689" y="289" width="670" height="676" key="search.everywhere.popup/0.23.2048.1180@0.23.2048.1180" timestamp="1595583591177" />
+    <state x="689" y="289" width="670" height="676" key="search.everywhere.popup/0.23.2048.1180@0.23.2048.1180" timestamp="1595583673086" />
   </component>
 </project>
