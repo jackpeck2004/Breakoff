@@ -4,7 +4,8 @@ from .constants import screen_width, screen_height
 
 
 class MasterSprite(pygame.sprite.Sprite):
-    def __init__(self, width, height, x, y):
+    def __init__(self, width, height, x, y, *groups):
+        super().__init__(*groups)
         self.width = width
         self.height = height
         self.x = x
@@ -15,12 +16,18 @@ class MasterSprite(pygame.sprite.Sprite):
     def getRect(self):
         return self.rect
 
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
+
     def setX(self, value: int):
-        self.x += value
+        self.x = value
         self.rect.x = self.x
 
     def setY(self, value: int):
-        self.y += value
+        self.y = value
         self.rect.y = self.y
 
     def setXY(self, x: int, y: int):
@@ -31,14 +38,23 @@ class MasterSprite(pygame.sprite.Sprite):
 class RectSprite(MasterSprite):
     def __init__(self, width, height, x, y):
         super().__init__(width, height, x, y)
+        self.change_x = 0
+        self.change_y = 0
+
+    def move(self, mod):
+        move_size = 10
+        # self.setX(self.x + mod*move_size)
+        self.change_x = mod*move_size
 
     def animate(self):
+        # Update Position based on move
+        self.setX(self.getX() + self.change_x)
 
         # Make sure the player stays in side the viewport even when it collides
         if self.getRect().right >= screen_width:
-            self.getRect().right = screen_width
+            self.setX(screen_width - self.width)
         if self.getRect().left <= 0:
-            self.getRect().left = 0
+            self.setX(0)
 
     def draw(self, surface, color):
         pygame.draw.rect(surface, color, self.rect)
@@ -82,6 +98,7 @@ class RoundedRectSprite(RectSprite):
         rect_tmp.center = rect.center
         pygame.draw.rect(surface, color, rect_tmp)
 
+
 class CircleSprite(MasterSprite):
     def __init__(self, diameter: int, x: int, y: int, speed_x: int, speed_y: int):
         self.diameter = diameter
@@ -93,10 +110,10 @@ class CircleSprite(MasterSprite):
         pygame.draw.circle(surface, color,
                            (self.x, self.y), self.diameter // 2)
 
-    def animation(self):
+    def animation(self) -> bool:
         # self.x += self.speed_x
         # self.y += self.speed_y
-        self.setXY(self.speed_x, self.speed_y)
+        self.setXY(self.x+self.speed_x, self.y+self.speed_y)
 
         # Check if the ball bounces off the sides
         if self.x + self.rect.width // 2 >= screen_width or self.x - self.rect.width // 2 <= 0:

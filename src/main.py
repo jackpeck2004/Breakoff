@@ -36,11 +36,19 @@ while is_running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             is_running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                player.move(1)
+            if event.key == pygame.K_LEFT:
+                player.move(-1)
+        elif event.type == pygame.KEYUP:
+            if event.key in [pygame.K_LEFT, pygame.K_RIGHT]:
+                player.move(0)
+
 
     # Sprite Animation
     alive = ball.animation()
 
-    player.setX(ball.speed_x)
     player.animate()
 
     # Check for collisions
