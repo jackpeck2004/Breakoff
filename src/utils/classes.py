@@ -7,7 +7,7 @@ class MasterSprite(pygame.sprite.Sprite):
         self.width = width
         self.height = height
         self.x = x
-        self.y = yj
+        self.y = y
 
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 

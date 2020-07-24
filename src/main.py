@@ -2,11 +2,10 @@
 
 import pygame
 from utils import colors
-from utils.classes import *
+from utils.classes import RectSprite, CircleSprite
 from utils.rounded_rect import draw_rounded_rect
 from utils.constants import *
 import random
-
 
 # Basic Variables Setup
 clock = pygame.time.Clock()
@@ -25,13 +24,13 @@ player = RectSprite(
     player_width,
     player_height,
     screen_width // 2 - player_width // 2,
-    screen_height - player_height - player_height//3
+    screen_height - player_height - player_height // 3
 )
 
 # Ball
 ball_diameter = 50
 
-ball = CircleSprite(ball_diameter, screen_width//2, screen_height//2, ball_speed_x, ball_speed_y)
+ball = CircleSprite(ball_diameter, screen_width // 2, screen_height // 2, ball_speed_x, ball_speed_y)
 
 # Main game loop
 while is_running:
@@ -41,10 +40,9 @@ while is_running:
         if event.type == pygame.QUIT:
             is_running = False
 
-
     # Sprite Animation
     alive = ball.animation()
-    
+
     player.setX(ball.speed_x)
     player.animate()
 
@@ -59,9 +57,9 @@ while is_running:
     screen.fill(colors.BLACK)
 
     # Draw Items
-    # draw_rounded_rect(screen, player.rect, player_color,
-    #                   player.rect.height//2-2)
-    player.draw(screen, player_color)
+    draw_rounded_rect(screen, player.rect, player_color,
+                      player.rect.height // 2 - 2)
+    # player.draw(screen, player_color)
     ball.draw(screen, colors.WHITE)
 
     # Display everything on the screen
