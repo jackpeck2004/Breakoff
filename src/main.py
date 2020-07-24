@@ -8,6 +8,7 @@ from utils.constants import *
 # Basic Variables Setup
 clock = pygame.time.Clock()
 is_running = True
+lives = 3
 
 # Initialize Pygame
 screen = pygame.display.set_mode((screen_width, screen_height))
@@ -15,9 +16,6 @@ pygame.display.set_caption('Breakoff')
 pygame.init()
 
 # Main Player
-
-player_width, player_height = 300, 30
-player_color = colors.BLUE
 player = RoundedRectSprite(
     player_width,
     player_height,
@@ -26,7 +24,6 @@ player = RoundedRectSprite(
 )
 
 # Ball
-ball_diameter = 20
 ball = CircleSprite(ball_diameter, screen_width // 2, screen_height // 2, ball_speed_x, ball_speed_y)
 
 # Main game loop
@@ -48,28 +45,34 @@ while is_running:
 
     # Sprite Animation
     alive = ball.animation()
-
     player.animate()
 
     # Check for collisions
-
     # Check if ball collides with the player bat
     if player.rect.colliderect(ball.rect):
         ball.speed_y *= -1
 
+    # When the player loses a life
     if not alive:
         # is_running = False
-        # TODO: add lives functionality
+        lives -= 1
+        alive = True
+        ball.setXY(screen_width//2, screen_height//2)
+        print(lives)
         pass
+
+    # Die when player loses all lives
+    if lives == 0:
+        break
+
+   # TODO: display lives
 
     # Screen Background
     screen.fill(colors.BLACK)
 
     # Draw Items
-    # draw_rounded_rect(screen, player.rect, player_color,
-    #                   player.rect.height // 2 - 2)
     player.draw(screen, player_color)
-    ball.draw(screen, colors.WHITE)
+    ball.draw(screen, ball_color)
 
     # Display everything on the screen
     clock.tick(60)
