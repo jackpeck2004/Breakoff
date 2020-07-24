@@ -4,7 +4,6 @@ import pygame
 from utils import colors
 from utils.classes import RectSprite, RoundedRectSprite, CircleSprite
 from utils.constants import *
-import random
 
 # Basic Variables Setup
 clock = pygame.time.Clock()
@@ -44,12 +43,16 @@ while is_running:
     player.setX(ball.speed_x)
     player.animate()
 
+    # Check for collisions
+
+    # Check if ball collides with the player bat
     if player.rect.colliderect(ball.rect):
         ball.speed_y *= -1
 
     if not alive:
-        print("hello")
-        is_running = False
+        # is_running = False
+        # TODO: add lives functionality
+        pass
 
     # Screen Background
     screen.fill(colors.BLACK)
