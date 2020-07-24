@@ -2,7 +2,6 @@ import pygame
 import pygame.gfxdraw
 from .constants import screen_width, screen_height
 
-
 class MasterSprite(pygame.sprite.Sprite):
     def __init__(self, width, height, x, y, *groups):
         super().__init__(*groups)
@@ -127,3 +126,16 @@ class CircleSprite(MasterSprite):
             return False
 
         return True
+
+class TextElement:
+    def __init__(self):
+        self.font = pygame.font.Font('freesansbold.ttf', 20)
+        self.text = ""
+        self.textRect = 0
+
+    def draw(self, content: str, color: tuple, screen, location=(screen_width // 2, screen_height // 2)):
+        self.text = self.font.render(content, True, color)
+        self.textRect = self.text.get_rect()
+        self.textRect.center = location
+        screen.blit(self.text, self.textRect)
+

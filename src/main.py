@@ -2,7 +2,7 @@
 
 import pygame
 from utils import colors
-from utils.classes import RectSprite, RoundedRectSprite, CircleSprite
+from utils.classes import RectSprite, RoundedRectSprite, CircleSprite, TextElement
 from utils.constants import *
 
 # Basic Variables Setup
@@ -25,6 +25,10 @@ player = RoundedRectSprite(
 
 # Ball
 ball = CircleSprite(ball_diameter, screen_width // 2, screen_height // 2, ball_speed_x, ball_speed_y)
+
+# Text
+lives_txt = TextElement()
+
 
 # Main game loop
 while is_running:
@@ -65,12 +69,11 @@ while is_running:
     if lives == 0:
         break
 
-   # TODO: display lives
-
     # Screen Background
     screen.fill(colors.BLACK)
 
     # Draw Items
+    lives_txt.draw("lives: {}".format(lives), colors.WHITE, screen, (50, 20))
     player.draw(screen, player_color)
     ball.draw(screen, ball_color)
 
