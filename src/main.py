@@ -10,6 +10,7 @@ clock = pygame.time.Clock()
 is_running = True
 lives = 3
 
+
 # Initialize Pygame
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Breakoff')
@@ -50,6 +51,8 @@ while is_running:
     # Sprite Animation
     alive = ball.animation()
     player.animate()
+
+    # TODO: implement block sprite generation
 
     # Check for collisions
     # Check if ball collides with the player bat
