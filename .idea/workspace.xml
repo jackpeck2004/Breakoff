@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48036914-6de2-40a9-9acd-f309acc25671" name="Default Changelist" comment="added arguments for speedX and speedY in ball_animation function">
-      <change afterPath="$PROJECT_DIR$/src/utils/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+    <list default="true" id="48036914-6de2-40a9-9acd-f309acc25671" name="Default Changelist" comment="added collision as a member of the Master Sprite">
       <change beforePath="$PROJECT_DIR$/src/utils/classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/classes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595577672949</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added collision as a member of the Master Sprite">
+      <created>1595579171336</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595579171336</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -108,7 +112,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="began to add ball logic animation in a function" />
     <MESSAGE value="added arguments for speedX and speedY in ball_animation function" />
-    <option name="LAST_COMMIT_MESSAGE" value="added arguments for speedX and speedY in ball_animation function" />
+    <MESSAGE value="added collision as a member of the Master Sprite" />
+    <option name="LAST_COMMIT_MESSAGE" value="added collision as a member of the Master Sprite" />
   </component>
   <component name="WindowStateProjectService">
     <state x="624" y="278" width="800" height="717" key="#Intentions" timestamp="1595576634925">

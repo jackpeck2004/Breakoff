@@ -7,6 +7,10 @@ class MasterSprite(pygame.sprite.Sprite):
         self.x = x
         self.y = y
 
+    def animation(self):
+        self.x += self.speed_x
+        self.y += self.speed_y
+
     def collision(self):
         if self.x + self.rect.width // 2 >= screen_width or self.x - self.rect.width // 2 <= 0:
             self.speed_x *= -1
@@ -39,9 +43,6 @@ class CircleSprite(MasterSprite):
 
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
-    def animation(self):
-        self.x += self.speed_x
-        self.y += self.speed_y
 
     def draw(self, surface, color):
         pygame.draw.circle(surface, color,
