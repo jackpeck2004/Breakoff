@@ -6,23 +6,6 @@ class MasterSprite(pygame.sprite.Sprite):
         self.x = x
         self.y = y
 
-    def setXSeed(self, speed):
-        self.speedX = speed
-
-    def bounceOffBorderLeft(self, WIDTH, HEIGHT):
-        if (self.x >= WIDTH):
-            self.x *= -1
-
-    def bounceOffBorders(self, screen):
-        self.screen = screen
-        self.bounceOffBorderLeft(self.screen)
-        # bounceOffBorderRight(self.screen)
-        # bounceOffBorderTop(self.screen)
-
-    def moveXBySpeed(self):
-        # self.speed = speed
-        self.x += self.speedX
-
 
 class RectSprite(MasterSprite):
     def __init__(self, width, height, x, y):
@@ -34,9 +17,7 @@ class RectSprite(MasterSprite):
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def draw(self, surface, color):
-        self.color = color
-        self.surface = surface
-        pygame.draw.rect(self.surface, self.color, self.rect)
+        pygame.draw.rect(surface, color, self.rect)
 
 
 class CircleSprite(MasterSprite):
@@ -50,7 +31,5 @@ class CircleSprite(MasterSprite):
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def draw(self, surface, color):
-        self.color = color
-        self.surface = surface
-        pygame.draw.circle(self.surface, self.color,
+        pygame.draw.circle(surface, color,
                            (self.x, self.y), self.diameter//2)

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48036914-6de2-40a9-9acd-f309acc25671" name="Default Changelist" comment="" />
+    <list default="true" id="48036914-6de2-40a9-9acd-f309acc25671" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Breakoff.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Breakoff.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/classes.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +23,30 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Breakoff" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/.pyenv/versions/3.7.5/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -34,24 +62,33 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="275" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595493142727">
+    <state x="624" y="278" width="800" height="717" key="#Intentions" timestamp="1595576634925">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state x="488" y="275" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2048.1180@0.23.2048.1180" timestamp="1595493142727" />
-    <state x="525" y="252" key="SettingsEditor" timestamp="1595493035049">
+    <state x="624" y="278" width="800" height="717" key="#Intentions/0.23.2048.1180@0.23.2048.1180" timestamp="1595576634925" />
+    <state x="488" y="275" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595576525148">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state x="525" y="252" key="SettingsEditor/0.23.2048.1180@0.23.2048.1180" timestamp="1595493035049" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/main.py</url>
-          <line>2</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="488" y="275" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2048.1180@0.23.2048.1180" timestamp="1595576525148" />
+    <state width="2027" height="149" key="GridCell.Tab.0.bottom" timestamp="1595577231991">
+      <screen x="0" y="23" width="2048" height="1180" />
+    </state>
+    <state width="2027" height="149" key="GridCell.Tab.0.bottom/0.23.2048.1180@0.23.2048.1180" timestamp="1595577231991" />
+    <state width="2027" height="149" key="GridCell.Tab.0.center" timestamp="1595577231991">
+      <screen x="0" y="23" width="2048" height="1180" />
+    </state>
+    <state width="2027" height="149" key="GridCell.Tab.0.center/0.23.2048.1180@0.23.2048.1180" timestamp="1595577231991" />
+    <state width="2027" height="149" key="GridCell.Tab.0.left" timestamp="1595577231990">
+      <screen x="0" y="23" width="2048" height="1180" />
+    </state>
+    <state width="2027" height="149" key="GridCell.Tab.0.left/0.23.2048.1180@0.23.2048.1180" timestamp="1595577231990" />
+    <state width="2027" height="149" key="GridCell.Tab.0.right" timestamp="1595577231991">
+      <screen x="0" y="23" width="2048" height="1180" />
+    </state>
+    <state width="2027" height="149" key="GridCell.Tab.0.right/0.23.2048.1180@0.23.2048.1180" timestamp="1595577231991" />
+    <state x="525" y="252" key="SettingsEditor" timestamp="1595577092379">
+      <screen x="0" y="23" width="2048" height="1180" />
+    </state>
+    <state x="525" y="252" key="SettingsEditor/0.23.2048.1180@0.23.2048.1180" timestamp="1595577092379" />
   </component>
 </project>
