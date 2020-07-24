@@ -40,8 +40,7 @@ while is_running:
             is_running = False
 
     # Sprite Animation
-    ball.animation()
-    ball.collision()
+    is_alive = ball.animation()
 
     # Screen Background
     screen.fill(colors.BLACK)

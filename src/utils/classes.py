@@ -7,16 +7,6 @@ class MasterSprite(pygame.sprite.Sprite):
         self.x = x
         self.y = y
 
-    def animation(self):
-        self.x += self.speed_x
-        self.y += self.speed_y
-
-    def collision(self):
-        if self.x + self.rect.width // 2 >= screen_width or self.x - self.rect.width // 2 <= 0:
-            self.speed_x *= -1
-        if self.y + self.rect.height // 2 >= screen_height or self.y - self.rect.height // 2 <= 0:
-            self.speed_y *= -1
-
 
 class RectSprite(MasterSprite):
     def __init__(self, width, height, x, y):
@@ -43,7 +33,23 @@ class CircleSprite(MasterSprite):
 
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
-
     def draw(self, surface, color):
         pygame.draw.circle(surface, color,
                            (self.x, self.y), self.diameter // 2)
+
+    def animation(self):
+        self.x += self.speed_x
+        self.y += self.speed_y
+
+        # Check if the ball bounces off the sides
+        if self.x + self.rect.width // 2 >= screen_width or self.x - self.rect.width // 2 <= 0:
+            self.speed_x *= -1
+
+        # Check if the ball bounces off the top
+        if self.y - self.rect.height // 2 <= 0:
+            self.speed_y *= -1
+
+        if self.y + self.rect.width // 2 >= screen_height:
+            return False
+
+        return True
