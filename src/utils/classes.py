@@ -7,7 +7,7 @@ class MasterSprite(pygame.sprite.Sprite):
         self.width = width
         self.height = height
         self.x = x
-        self.y = y
+        self.y = yj
 
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
@@ -22,10 +22,9 @@ class MasterSprite(pygame.sprite.Sprite):
         self.y += value
         self.rect.y = self.y
 
-    def setXY(self, x:int, y: int):
+    def setXY(self, x: int, y: int):
         self.setX(x)
         self.setY(y)
-
 
 
 class RectSprite(MasterSprite):
@@ -33,9 +32,12 @@ class RectSprite(MasterSprite):
         super().__init__(width, height, x, y)
 
     def animate(self):
+
+        # Make sure the player stays in side the viewport even when it collides
         if self.getRect().right >= screen_width:
-            self.getRect().x = screen_width
-            print("collided")
+            self.getRect().right = screen_width
+        if self.getRect().left <= 0:
+            self.getRect().left = 0
 
     def draw(self, surface, color):
         pygame.draw.rect(surface, color, self.rect)
