@@ -29,20 +29,22 @@ def main():
 
     # Ball
     ball_diameter = 50
-    ball_speed_x = 10
-    ball_speed_y = 10
+
+    ball_speed_x = 5
+    ball_speed_y = 7
     ball = classes.CircleSprite(ball_diameter, screen_width//2, screen_height//2)
 
-    def ball_animation():
-        ball.x += ball_speed_x
-        ball.y += ball_speed_y
+    def ball_animation(speedX, speedY):
+        ball.x += speedX
+        ball.y += speedY
         if ball.x >= screen_width or ball.x <= 0:
-            ball.x *= -1
-            print(ball.x)
+            speedX *= -1
+            print("x:", ball.x)
         if ball.y >= screen_height or ball.y <= 0:
-            ball.y *= -1
-            print(ball.y)
+            speedY *= -1
+            print("y:", ball.y)
 
+    # Main game loop
     while is_running:
 
         # Handle Input
@@ -51,7 +53,7 @@ def main():
                 is_running = False
 
         # Sprite Animation
-        ball_animation()
+        ball_animation(ball_speed_x, ball_speed_y)
 
         # Screen Background
         screen.fill(colors.BLACK)
