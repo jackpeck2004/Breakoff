@@ -10,7 +10,6 @@ clock = pygame.time.Clock()
 is_running = True
 lives = 3
 
-
 # Initialize Pygame
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Breakoff')
@@ -30,7 +29,6 @@ ball = CircleSprite(ball_diameter, screen_width // 2, screen_height // 2, ball_s
 # Text
 lives_txt = TextElement()
 
-
 # Main game loop
 while is_running:
 
@@ -46,7 +44,6 @@ while is_running:
         elif event.type == pygame.KEYUP:
             if event.key in [pygame.K_LEFT, pygame.K_RIGHT]:
                 player.move(0)
-
 
     # Sprite Animation
     alive = ball.animation()
@@ -64,7 +61,7 @@ while is_running:
         # is_running = False
         lives -= 1
         alive = True
-        ball.setXY(screen_width//2, screen_height//2)
+        ball.setXY(screen_width // 2, screen_height // 2)
         print(lives)
         pass
 
@@ -74,6 +71,19 @@ while is_running:
 
     # Screen Background
     screen.fill(colors.BLACK)
+
+    # number = 3
+    # for i in range( number +1):
+    #     block_width = (screen_width - (20 * number)) / number
+    #     print(block_width)
+    #     block_height = 30
+    #     if i == 1:
+    #         block_x = 5
+    #     else:
+    #         block_x = 10 * i + block_width * (i - 1)
+    #     block_y = 100
+    #     rect = RectSprite(block_width, block_height, block_x, block_y)
+    #     rect.draw(screen, colors.RED)
 
     # Draw Items
     lives_txt.draw("lives: {}".format(lives), colors.WHITE, screen, (50, 20))
