@@ -1,6 +1,6 @@
 import pygame
 import pygame.gfxdraw
-from .constants import screen_width, screen_height
+from .constants import screen_width, screen_height, player_speed
 
 
 class MasterSprite(pygame.sprite.Sprite):
@@ -38,13 +38,13 @@ class MasterSprite(pygame.sprite.Sprite):
 class RectSprite(MasterSprite):
     def __init__(self, width, height, x, y):
         super().__init__(width, height, x, y)
+        self.move_size = player_speed
         self.change_x = 0
         self.change_y = 0
 
     def move(self, mod):
-        move_size = 10
         # self.setX(self.x + mod*move_size)
-        self.change_x = mod * move_size
+        self.change_x = mod * self.move_size
 
     def animate(self):
         # Update Position based on move
@@ -105,15 +105,25 @@ class CircleSprite(MasterSprite):
         super().__init__(self.diameter, self.diameter, x, y)
         self.speed_x = speed_x
         self.speed_y = speed_y
+        self.max_speed = 8
 
     def draw(self, surface, color):
         pygame.draw.circle(surface, color,
                            (self.x, self.y), self.diameter // 2)
 
+    @property
     def animation(self) -> bool:
         # self.x += self.speed_x
         # self.y += self.speed_y
         self.setXY(self.x + self.speed_x, self.y + self.speed_y)
+
+        if abs(self.speed_x) >= self.max_speed or abs(self.speed_y) >= self.max_speed:
+            if self.speed_x > 0:
+                self.speed_x = self.max_speed
+                self.speed_x = self.max_speed
+            else:
+                self.speed_x = self.max_speed * -1
+                self.speed_x = self.max_speed * -1
 
         # Check if the ball bounces off the sides
         if self.x + self.rect.width // 2 >= screen_width or self.x - self.rect.width // 2 <= 0:
@@ -127,6 +137,7 @@ class CircleSprite(MasterSprite):
             return False
 
         return True
+
 
 class TextElement:
     def __init__(self):
