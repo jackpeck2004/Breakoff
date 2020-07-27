@@ -128,7 +128,6 @@ class CircleSprite(MasterSprite):
 
         return True
 
-
 class TextElement:
     def __init__(self):
         self.font = pygame.font.Font('freesansbold.ttf', 20)

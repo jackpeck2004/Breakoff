@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from typing import Any, Union
 
 import pygame
 from utils import colors
@@ -28,6 +29,37 @@ ball = CircleSprite(ball_diameter, screen_width // 2, screen_height // 2, ball_s
 
 # Text
 lives_txt = TextElement()
+
+number_of_enemies = 7
+spacer = 10
+enemy_width = (screen_width - spacer * number_of_enemies * 2) / number_of_enemies
+enemy_height = 30
+enemy_y = 100
+enemies = []
+
+for i in range(1, number_of_enemies + 1):
+    if i == 1:
+        enemy_x = spacer
+    else:
+        enemy_x = (spacer * 2 + enemy_width) * (i - 1) + spacer
+
+    rect = RectSprite(enemy_width, enemy_height, enemy_x, enemy_y)
+    has_collided = False
+    # enemy_color = (
+    #     (number_of_enemies % 255 * number_of_enemies * 10) % 255,
+    #     (number_of_enemies % 255 * number_of_enemies * 10) % 255,
+    #     (number_of_enemies % 255 * number_of_enemies * 10) % 255)
+
+    if number_of_enemies % 3 == 1:
+        enemy_color = colors.YELLOW
+    elif number_of_enemies % 3 == 2:
+        enemy_color = colors.RED
+    elif number_of_enemies % 3 == 3:
+        enemy_color = colors.GREEN
+    else:
+        enemy_color = colors.PURPLE
+
+    enemies.append([rect, enemy_color, has_collided])
 
 # Main game loop
 while is_running:
@@ -72,23 +104,17 @@ while is_running:
     # Screen Background
     screen.fill(colors.BLACK)
 
-    # number = 3
-    # for i in range( number +1):
-    #     block_width = (screen_width - (20 * number)) / number
-    #     print(block_width)
-    #     block_height = 30
-    #     if i == 1:
-    #         block_x = 5
-    #     else:
-    #         block_x = 10 * i + block_width * (i - 1)
-    #     block_y = 100
-    #     rect = RectSprite(block_width, block_height, block_x, block_y)
-    #     rect.draw(screen, colors.RED)
-
     # Draw Items
     lives_txt.draw("lives: {}".format(lives), colors.WHITE, screen, (50, 20))
     player.draw(screen, player_color)
     ball.draw(screen, ball_color)
+    for enemy in enemies:
+        if enemy[0].rect.colliderect(ball.rect):
+            enemy[2] = True
+        if not enemy[2]:
+            enemy[0].draw(screen, enemy[1])
+        else:
+            enemies.remove(enemy)
 
     # Display everything on the screen
     clock.tick(60)
