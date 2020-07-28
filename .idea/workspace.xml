@@ -19,13 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48036914-6de2-40a9-9acd-f309acc25671" name="Default Changelist" comment="FEATURE: added enemies which when collided disappear">
-      <change afterPath="$PROJECT_DIR$/src/utils/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.py" afterDir="false" />
-    </list>
+    <list default="true" id="48036914-6de2-40a9-9acd-f309acc25671" name="Default Changelist" comment="BUG: fixed an issue where when the ball reached max speed it wasn't allowed to travel right." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -190,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595840677051</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="BUG: fixed an issue where when the ball reached max speed it wasn't allowed to travel right.">
+      <created>1595879759868</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1595879759868</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -222,7 +223,8 @@
     <MESSAGE value="TODO: implement block sprite generation" />
     <MESSAGE value="FEATURE: began implementing the enemy generation" />
     <MESSAGE value="FEATURE: added enemies which when collided disappear" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEATURE: added enemies which when collided disappear" />
+    <MESSAGE value="BUG: fixed an issue where when the ball reached max speed it wasn't allowed to travel right." />
+    <option name="LAST_COMMIT_MESSAGE" value="BUG: fixed an issue where when the ball reached max speed it wasn't allowed to travel right." />
   </component>
   <component name="WindowStateProjectService">
     <state x="624" y="278" width="800" height="717" key="#Intentions" timestamp="1595576634925">
@@ -245,34 +247,34 @@
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
     <state x="843" y="510" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.23.2048.1180@0.23.2048.1180" timestamp="1595879520022" />
-    <state width="2027" height="180" key="GridCell.Tab.0.bottom" timestamp="1595879697790">
+    <state width="2027" height="180" key="GridCell.Tab.0.bottom" timestamp="1595879792666">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state width="2027" height="180" key="GridCell.Tab.0.bottom/0.23.2048.1180@0.23.2048.1180" timestamp="1595879697790" />
+    <state width="2027" height="180" key="GridCell.Tab.0.bottom/0.23.2048.1180@0.23.2048.1180" timestamp="1595879792666" />
     <state width="2027" height="149" key="GridCell.Tab.0.bottom/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1595843838847" />
-    <state width="2027" height="180" key="GridCell.Tab.0.center" timestamp="1595879697789">
+    <state width="2027" height="180" key="GridCell.Tab.0.center" timestamp="1595879792666">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state width="2027" height="180" key="GridCell.Tab.0.center/0.23.2048.1180@0.23.2048.1180" timestamp="1595879697789" />
+    <state width="2027" height="180" key="GridCell.Tab.0.center/0.23.2048.1180@0.23.2048.1180" timestamp="1595879792666" />
     <state width="2027" height="149" key="GridCell.Tab.0.center/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1595843838846" />
-    <state width="2027" height="180" key="GridCell.Tab.0.left" timestamp="1595879697789">
+    <state width="2027" height="180" key="GridCell.Tab.0.left" timestamp="1595879792665">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state width="2027" height="180" key="GridCell.Tab.0.left/0.23.2048.1180@0.23.2048.1180" timestamp="1595879697789" />
+    <state width="2027" height="180" key="GridCell.Tab.0.left/0.23.2048.1180@0.23.2048.1180" timestamp="1595879792665" />
     <state width="2027" height="149" key="GridCell.Tab.0.left/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1595843838845" />
-    <state width="2027" height="180" key="GridCell.Tab.0.right" timestamp="1595879697790">
+    <state width="2027" height="180" key="GridCell.Tab.0.right" timestamp="1595879792666">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state width="2027" height="180" key="GridCell.Tab.0.right/0.23.2048.1180@0.23.2048.1180" timestamp="1595879697790" />
+    <state width="2027" height="180" key="GridCell.Tab.0.right/0.23.2048.1180@0.23.2048.1180" timestamp="1595879792666" />
     <state width="2027" height="149" key="GridCell.Tab.0.right/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1595843838846" />
     <state x="525" y="252" key="SettingsEditor" timestamp="1595577092379">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
     <state x="525" y="252" key="SettingsEditor/0.23.2048.1180@0.23.2048.1180" timestamp="1595577092379" />
-    <state x="624" y="353" key="Vcs.Push.Dialog.v2" timestamp="1595837434777">
+    <state x="624" y="353" key="Vcs.Push.Dialog.v2" timestamp="1595879761204">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state x="624" y="353" key="Vcs.Push.Dialog.v2/0.23.2048.1180@0.23.2048.1180" timestamp="1595837434777" />
+    <state x="624" y="353" key="Vcs.Push.Dialog.v2/0.23.2048.1180@0.23.2048.1180" timestamp="1595879761204" />
     <state x="722" y="245" width="604" height="735" key="find.popup" timestamp="1595879732962">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
