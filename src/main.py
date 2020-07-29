@@ -1,9 +1,40 @@
 #!/usr/bin/env python3
 import pygame
+from random import randint
 from utils import colors
 from utils.classes import RectSprite, RoundedRectSprite, CircleSprite, TextElement
 from utils.constants import *
-from utils.functions import spawn_enemies, reset_lives
+
+
+def reset_lives():
+    return initial_lives
+
+
+def spawn_enemies(local_enemies, local_number_of_enemies):
+    for i in range(1, local_number_of_enemies + 1):
+        if i == 1:
+            enemy_x = spacer
+        else:
+            enemy_x = (spacer * 2 + enemy_width) * (i - 1) + spacer
+
+        local_enemy = RectSprite(enemy_width, enemy_height, enemy_x, enemy_y)
+        has_collided = False
+        # enemy_color = (
+        #     (number_of_enemies % 255 * number_of_enemies * 10) % 255,
+        #     (number_of_enemies % 255 * number_of_enemies * 10) % 255,
+        #     (number_of_enemies % 255 * number_of_enemies * 10) % 255)
+
+        if local_number_of_enemies % 3 == 1:
+            enemy_color = YELLOW
+        elif local_number_of_enemies % 3 == 2:
+            enemy_color = RED
+        elif local_number_of_enemies % 3 == 3:
+            enemy_color = GREEN
+        else:
+            enemy_color = PURPLE
+
+        local_enemies.append([local_enemy, enemy_color, has_collided])
+
 
 # Basic Variables Setup
 clock = pygame.time.Clock()
@@ -33,7 +64,7 @@ lives_txt = TextElement()
 score_txt = TextElement()
 
 # Enemies
-spawn_enemies()
+spawn_enemies(enemies)
 
 # Main game loop
 while is_running:
@@ -80,7 +111,7 @@ while is_running:
 
     # Draw Items
     lives_txt.draw("lives: {}".format(lives), colors.WHITE, screen, (50, text_y))
-    score_txt.draw("score: {}".format(score), colors.WHITE, screen, (screen_width//2, text_y))
+    score_txt.draw("score: {}".format(score), colors.WHITE, screen, (screen_width // 2, text_y))
     player.draw(screen, player_color)
     ball.draw(screen, ball_color)
     for enemy in enemies:
@@ -92,6 +123,8 @@ while is_running:
             player.move_size *= 1.1
             score += 10 * level
         if not enemy[2]:
+            enemy[0].y += 0.5
+            enemy[0].rect.y += 0.5
             enemy[0].draw(screen, enemy[1])
         else:
             enemies.remove(enemy)
@@ -99,7 +132,7 @@ while is_running:
     if len(enemies) == 0:
         lives = reset_lives()
         number_of_enemies = random_enemy_number()
-        spawn_enemies()
+        spawn_enemies(enemies, randint(4, 12))
         level += 1
 
     # Display everything on the screen
