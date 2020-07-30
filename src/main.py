@@ -2,27 +2,29 @@
 import pygame
 from random import randint
 from utils import colors
-from utils.classes import RectSprite, RoundedRectSprite, CircleSprite, TextElement
+from utils.classes import RectSprite, RoundedRectSprite, CircleSprite, TextElement, EnemySprite
 from utils.constants import *
+
+
+def generate_number_enemies():
+    return randint(4, 8)
 
 
 def reset_lives():
     return initial_lives
 
 
-def spawn_enemies(local_enemies, local_number_of_enemies):
+def spawn_enemies(local_enemies, local_number_of_enemies=generate_number_enemies()):
+    enemy_width = (SCREEN_WIDTH - spacer *
+                   local_number_of_enemies * 2) / local_number_of_enemies
     for i in range(1, local_number_of_enemies + 1):
         if i == 1:
             enemy_x = spacer
         else:
             enemy_x = (spacer * 2 + enemy_width) * (i - 1) + spacer
 
-        local_enemy = RectSprite(enemy_width, enemy_height, enemy_x, enemy_y)
+        local_enemy = EnemySprite(enemy_width, enemy_height, enemy_x, enemy_y)
         has_collided = False
-        # enemy_color = (
-        #     (number_of_enemies % 255 * number_of_enemies * 10) % 255,
-        #     (number_of_enemies % 255 * number_of_enemies * 10) % 255,
-        #     (number_of_enemies % 255 * number_of_enemies * 10) % 255)
 
         if local_number_of_enemies % 3 == 1:
             enemy_color = YELLOW
@@ -44,7 +46,7 @@ score = 0
 level = 1
 
 # Initialize Pygame
-screen = pygame.display.set_mode((screen_width, screen_height))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Breakoff')
 pygame.init()
 
@@ -52,12 +54,13 @@ pygame.init()
 player = RoundedRectSprite(
     player_width,
     player_height,
-    screen_width // 2 - player_width // 2,
-    screen_height - player_height - player_height // 3
+    SCREEN_WIDTH // 2 - player_width // 2,
+    SCREEN_HEIGHT - player_height - player_height // 3
 )
 
 # Ball
-ball = CircleSprite(ball_diameter, screen_width // 2, screen_height // 2, ball_speed_x, ball_speed_y)
+ball = CircleSprite(ball_diameter, SCREEN_WIDTH // 2,
+                    SCREEN_HEIGHT // 2, ball_speed_x, ball_speed_y)
 
 # Text
 lives_txt = TextElement()
@@ -65,6 +68,9 @@ score_txt = TextElement()
 
 # Enemies
 spawn_enemies(enemies)
+
+
+powerups = ["longer bat", "shorter bat", "shield"]
 
 # Main game loop
 while is_running:
@@ -96,7 +102,7 @@ while is_running:
         # is_running = False
         lives -= 1
         alive = True
-        ball.setXY(screen_width // 2, screen_height // 2)
+        ball.setXY(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
         ball.speed_x = ball_speed_x
         ball.speed_y = ball_speed_y
         player.move_size = player_speed
@@ -110,10 +116,13 @@ while is_running:
     screen.fill(colors.BLACK)
 
     # Draw Items
-    lives_txt.draw("lives: {}".format(lives), colors.WHITE, screen, (50, text_y))
-    score_txt.draw("score: {}".format(score), colors.WHITE, screen, (screen_width // 2, text_y))
+    lives_txt.draw("lives: {}".format(lives),
+                   colors.WHITE, screen, (50, text_y))
+    score_txt.draw("score: {}".format(score), colors.WHITE,
+                   screen, (SCREEN_WIDTH // 2, text_y))
     player.draw(screen, player_color)
     ball.draw(screen, ball_color)
+    speed_counter = 0
     for enemy in enemies:
         if enemy[0].rect.colliderect(ball.rect):
             enemy[2] = True
@@ -123,20 +132,23 @@ while is_running:
             player.move_size *= 1.1
             score += 10 * level
         if not enemy[2]:
-            enemy[0].y += 0.5
-            enemy[0].rect.y += 0.5
+            if speed_counter == enemy_speed:
+                enemy[0].animate()
+                speed_counter = 0
+            else:
+                speed_counter += 1
             enemy[0].draw(screen, enemy[1])
         else:
             enemies.remove(enemy)
 
     if len(enemies) == 0:
         lives = reset_lives()
-        number_of_enemies = random_enemy_number()
-        spawn_enemies(enemies, randint(4, 12))
+        spawn_enemies(enemies)
         level += 1
 
     # Display everything on the screen
     clock.tick(60)
     pygame.display.flip()
 
+print("Score:", score)
 pygame.quit()

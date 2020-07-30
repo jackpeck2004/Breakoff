@@ -1,6 +1,7 @@
 import pygame
 import pygame.gfxdraw
-from .constants import screen_width, screen_height, player_speed
+from random import randint
+from .constants import SCREEN_WIDTH, SCREEN_HEIGHT, player_speed
 
 
 class MasterSprite(pygame.sprite.Sprite):
@@ -51,13 +52,32 @@ class RectSprite(MasterSprite):
         self.setX(self.getX() + self.change_x)
 
         # Make sure the player stays in side the viewport even when it collides
-        if self.getRect().right >= screen_width:
-            self.setX(screen_width - self.width)
+        if self.getRect().right >= SCREEN_WIDTH:
+            self.setX(SCREEN_WIDTH - self.width)
         if self.getRect().left <= 0:
             self.setX(0)
 
     def draw(self, surface, color):
         pygame.draw.rect(surface, color, self.rect)
+
+
+class EnemySprite(RectSprite):
+    def __init__(self, width, height, x, y):
+        super().__init__(width, height, x, y)
+        self.has_moved = False
+        self.move_size = randint(1, 3)
+
+    def animate(self):
+        if not self.has_moved:
+
+            if self.rect.bottom >= SCREEN_HEIGHT:
+                self.move_size *= -1
+
+            self.y += self.move_size
+            self.rect.y += self.move_size
+            self.has_moved = True
+        else:
+            self.has_moved = False
 
 
 class RoundedRectSprite(RectSprite):
@@ -126,14 +146,14 @@ class CircleSprite(MasterSprite):
                 self.speed_x = self.max_speed * -1
 
         # Check if the ball bounces off the sides
-        if self.x + self.rect.width // 2 >= screen_width or self.x - self.rect.width // 2 <= 0:
+        if self.x + self.rect.width // 2 >= SCREEN_WIDTH or self.x - self.rect.width // 2 <= 0:
             self.speed_x *= -1
 
         # Check if the ball bounces off the top
         if self.y - self.rect.height // 2 <= 0:
             self.speed_y *= -1
 
-        if self.y + self.rect.width // 2 >= screen_height:
+        if self.y + self.rect.width // 2 >= SCREEN_HEIGHT:
             return False
 
         return True
@@ -145,7 +165,7 @@ class TextElement:
         self.text = ""
         self.textRect = 0
 
-    def draw(self, content: str, color: tuple, screen, location=(screen_width // 2, screen_height // 2)):
+    def draw(self, content: str, color: tuple, screen, location=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)):
         self.text = self.font.render(content, True, color)
         self.textRect = self.text.get_rect()
         self.textRect.center = location
