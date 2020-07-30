@@ -69,8 +69,9 @@ score_txt = TextElement()
 # Enemies
 spawn_enemies(enemies)
 
-
+# Power Up
 powerups = ["longer bat", "shorter bat", "shield"]
+power_up_present = False
 
 # Main game loop
 while is_running:
@@ -131,13 +132,28 @@ while is_running:
             ball.speed_y *= 1.2
             player.move_size *= 1.1
             score += 10 * level
+            if enemy[0].power_up:
+                enemy[0].power_up = None
+                power_up_present = False
         if not enemy[2]:
             if speed_counter == enemy_speed:
                 enemy[0].animate()
                 speed_counter = 0
+                if not enemy[0].power_up and not power_up_present:
+                    random_number = randint(1, 10)
+                    if random_number % 3 == 0:
+                        # Calculate which powerup to assign and assign it to the enemy
+                        power_up_pos = random_number % len(powerups)
+                        enemy[0].power_up = powerups[power_up_pos - 1]
+                        power_up_present = True
+
             else:
                 speed_counter += 1
-            enemy[0].draw(screen, enemy[1])
+
+            if enemy[0].power_up:
+                enemy[0].draw(screen, colors.WHITE)
+            else:
+                enemy[0].draw(screen, enemy[1])
         else:
             enemies.remove(enemy)
 

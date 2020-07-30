@@ -66,6 +66,7 @@ class EnemySprite(RectSprite):
         super().__init__(width, height, x, y)
         self.has_moved = False
         self.move_size = randint(1, 3)
+        self.power_up = None
 
     def animate(self):
         if not self.has_moved:
