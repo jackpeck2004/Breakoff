@@ -73,6 +73,8 @@ class EnemySprite(RectSprite):
 
             if self.rect.bottom >= SCREEN_HEIGHT:
                 self.move_size *= -1
+                if self.power_up:
+                    self.power_up = None
 
             self.y += self.move_size
             self.rect.y += self.move_size
@@ -171,3 +173,9 @@ class TextElement:
         self.textRect = self.text.get_rect()
         self.textRect.center = location
         screen.blit(self.text, self.textRect)
+
+
+class PlayerSprite(RoundedRectSprite):
+    def __init__(self, width, height, x, y):
+        super().__init__(width, height, x, y)
+        self.has_powerup: bool = False

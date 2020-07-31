@@ -19,10 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48036914-6de2-40a9-9acd-f309acc25671" name="Default Changelist" comment="REFACTOR: migrated all function over to main.py">
+    <list default="true" id="48036914-6de2-40a9-9acd-f309acc25671" name="Default Changelist" comment="FEATURE: Added random powerup selection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/classes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596093279901</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="FEATURE: Added random powerup selection">
+      <created>1596097405957</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1596097405957</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -244,7 +252,8 @@
     <MESSAGE value="BUG: fixed an issue where when the ball reached max speed it wasn't allowed to travel right." />
     <MESSAGE value="REFACTOR: migrated all function over to main.py" />
     <MESSAGE value="BUG: Fixed rects going off screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="BUG: Fixed rects going off screen" />
+    <MESSAGE value="FEATURE: Added random powerup selection" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEATURE: Added random powerup selection" />
   </component>
   <component name="WindowStateProjectService">
     <state x="624" y="278" width="800" height="717" key="#Intentions" timestamp="1595576634925">
@@ -268,34 +277,42 @@
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
     <state x="843" y="510" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.23.2048.1180@0.23.2048.1180" timestamp="1595879520022" />
-    <state width="1003" height="114" key="GridCell.Tab.0.bottom" timestamp="1596097252485">
-      <screen x="0" y="23" width="2048" height="1180" />
+    <state width="2027" height="114" key="GridCell.Tab.0.bottom" timestamp="1596186891494">
+      <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="1003" height="114" key="GridCell.Tab.0.bottom/0.23.2048.1180@0.23.2048.1180" timestamp="1596097252485" />
-    <state width="3339" height="194" key="GridCell.Tab.0.bottom/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1596015624036" />
-    <state width="1003" height="114" key="GridCell.Tab.0.center" timestamp="1596097252485">
-      <screen x="0" y="23" width="2048" height="1180" />
+    <state width="2027" height="114" key="GridCell.Tab.0.bottom/0.0.2048.1280@0.0.2048.1280" timestamp="1596186891494" />
+    <state width="3339" height="114" key="GridCell.Tab.0.bottom/0.0.3360.1890/-2048.610.2048.1280@0.0.3360.1890" timestamp="1596185389912" />
+    <state width="1003" height="114" key="GridCell.Tab.0.bottom/0.23.2048.1180@0.23.2048.1180" timestamp="1596112962187" />
+    <state width="1003" height="114" key="GridCell.Tab.0.bottom/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1596184373435" />
+    <state width="2027" height="114" key="GridCell.Tab.0.center" timestamp="1596186891492">
+      <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="1003" height="114" key="GridCell.Tab.0.center/0.23.2048.1180@0.23.2048.1180" timestamp="1596097252485" />
-    <state width="3339" height="194" key="GridCell.Tab.0.center/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1596015624035" />
-    <state width="1003" height="114" key="GridCell.Tab.0.left" timestamp="1596097252484">
-      <screen x="0" y="23" width="2048" height="1180" />
+    <state width="2027" height="114" key="GridCell.Tab.0.center/0.0.2048.1280@0.0.2048.1280" timestamp="1596186891492" />
+    <state width="3339" height="114" key="GridCell.Tab.0.center/0.0.3360.1890/-2048.610.2048.1280@0.0.3360.1890" timestamp="1596185389911" />
+    <state width="1003" height="114" key="GridCell.Tab.0.center/0.23.2048.1180@0.23.2048.1180" timestamp="1596112962186" />
+    <state width="1003" height="114" key="GridCell.Tab.0.center/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1596184373434" />
+    <state width="2027" height="114" key="GridCell.Tab.0.left" timestamp="1596186891492">
+      <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="1003" height="114" key="GridCell.Tab.0.left/0.23.2048.1180@0.23.2048.1180" timestamp="1596097252484" />
-    <state width="3339" height="194" key="GridCell.Tab.0.left/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1596015624035" />
-    <state width="1003" height="114" key="GridCell.Tab.0.right" timestamp="1596097252485">
-      <screen x="0" y="23" width="2048" height="1180" />
+    <state width="2027" height="114" key="GridCell.Tab.0.left/0.0.2048.1280@0.0.2048.1280" timestamp="1596186891492" />
+    <state width="3339" height="114" key="GridCell.Tab.0.left/0.0.3360.1890/-2048.610.2048.1280@0.0.3360.1890" timestamp="1596185389910" />
+    <state width="1003" height="114" key="GridCell.Tab.0.left/0.23.2048.1180@0.23.2048.1180" timestamp="1596112962186" />
+    <state width="1003" height="114" key="GridCell.Tab.0.left/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1596184373434" />
+    <state width="2027" height="114" key="GridCell.Tab.0.right" timestamp="1596186891493">
+      <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state width="1003" height="114" key="GridCell.Tab.0.right/0.23.2048.1180@0.23.2048.1180" timestamp="1596097252485" />
-    <state width="3339" height="194" key="GridCell.Tab.0.right/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1596015624035" />
+    <state width="2027" height="114" key="GridCell.Tab.0.right/0.0.2048.1280@0.0.2048.1280" timestamp="1596186891493" />
+    <state width="3339" height="114" key="GridCell.Tab.0.right/0.0.3360.1890/-2048.610.2048.1280@0.0.3360.1890" timestamp="1596185389911" />
+    <state width="1003" height="114" key="GridCell.Tab.0.right/0.23.2048.1180@0.23.2048.1180" timestamp="1596112962187" />
+    <state width="1003" height="114" key="GridCell.Tab.0.right/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1596184373435" />
     <state x="525" y="252" key="SettingsEditor" timestamp="1595577092379">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
     <state x="525" y="252" key="SettingsEditor/0.23.2048.1180@0.23.2048.1180" timestamp="1595577092379" />
-    <state x="624" y="353" key="Vcs.Push.Dialog.v2" timestamp="1596093281019">
+    <state x="624" y="353" key="Vcs.Push.Dialog.v2" timestamp="1596097407410">
       <screen x="0" y="23" width="2048" height="1180" />
     </state>
-    <state x="624" y="353" key="Vcs.Push.Dialog.v2/0.23.2048.1180@0.23.2048.1180" timestamp="1596093281019" />
+    <state x="624" y="353" key="Vcs.Push.Dialog.v2/0.23.2048.1180@0.23.2048.1180" timestamp="1596097407410" />
     <state x="1024" y="524" key="Vcs.Push.Dialog.v2/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1596012023329" />
     <state x="1185" y="360" width="991" height="1115" key="find.popup" timestamp="1596012790720">
       <screen x="0" y="23" width="3360" height="1790" />
@@ -307,10 +324,11 @@
     </state>
     <state x="867" y="406" key="refactoring.ChangeSignatureDialog/0.23.2048.1180@0.23.2048.1180" timestamp="1595879524063" />
     <state x="1422" y="604" key="refactoring.ChangeSignatureDialog/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1596012705209" />
-    <state x="689" y="289" width="670" height="676" key="search.everywhere.popup" timestamp="1596093718471">
-      <screen x="0" y="23" width="2048" height="1180" />
+    <state x="1130" y="426" width="1100" height="1083" key="search.everywhere.popup" timestamp="1596184591073">
+      <screen x="0" y="0" width="3360" height="1890" />
     </state>
-    <state x="689" y="289" width="670" height="676" key="search.everywhere.popup/0.23.2048.1180@0.23.2048.1180" timestamp="1596093718471" />
+    <state x="1130" y="426" width="1100" height="1083" key="search.everywhere.popup/0.0.3360.1890/-2048.610.2048.1280@0.0.3360.1890" timestamp="1596184591073" />
+    <state x="689" y="289" width="670" height="676" key="search.everywhere.popup/0.23.2048.1180@0.23.2048.1180" timestamp="1596112458673" />
     <state x="1130" y="427" width="1100" height="1026" key="search.everywhere.popup/0.23.3360.1790/-2048.633.2048.1257@0.23.3360.1790" timestamp="1596012762913" />
   </component>
 </project>

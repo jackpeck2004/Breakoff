@@ -2,8 +2,23 @@
 import pygame
 from random import randint
 from utils import colors
-from utils.classes import RectSprite, RoundedRectSprite, CircleSprite, TextElement, EnemySprite
+from utils.classes import RectSprite, RoundedRectSprite, CircleSprite, TextElement, EnemySprite, PlayerSprite
 from utils.constants import *
+
+
+def reset_powerups(player, power_ups_present):
+    player.has_powerup = False
+    player.width = player_width
+    player.height = player_height
+    player.rect.width = player_width
+    player.rect.height = player_height
+
+    return not power_ups_present
+
+
+def change_width(rect, size):
+    rect.width += size
+    rect.rect.width += size
 
 
 def generate_number_enemies():
@@ -51,7 +66,7 @@ pygame.display.set_caption('Breakoff')
 pygame.init()
 
 # Main Player
-player = RoundedRectSprite(
+player = PlayerSprite(
     player_width,
     player_height,
     SCREEN_WIDTH // 2 - player_width // 2,
@@ -93,10 +108,53 @@ while is_running:
     alive = ball.animation
     player.animate()
 
+    if power_up_present and player.has_powerup:
+        if counter >= limit:
+            counter = 0
+            power_up_present = reset_powerups(player, power_up_present)
+        else:
+            counter += 1
+
     # Check for collisions
     # Check if ball collides with the player bat
-    if player.rect.colliderect(ball.rect):
-        ball.speed_y *= -1
+    collision = False
+    while player.rect.colliderect(ball.rect):
+        collision = True
+        ball.setXY(ball.x - ball.speed_x / 4, ball.y - ball.speed_y / 4)
+        # # If the ball hits the top of the bat it bounces off
+        # if ball.rect.bottom > player.rect.top:
+        #     ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
+        #     # ball.speed_y *= -1
+        # else:
+        #     if ball.x - player.x > 0:
+        #         if ball.rect.left > player.rect.right:
+        #             ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
+        #         # ball.speed_x *= -1
+        #     else:
+        #         if ball.rect.right > player.rect.left:
+        #             ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
+        #         # ball.speed_x *= -1
+    if collision:
+        collision = False
+        if ball.rect.right >= player.rect.left and ball.rect.left <= player.rect.right:
+            ball.speed_y *= -1
+        else:
+            ball.speed_x *= -1
+        # if ball.rect.bottom > player.rect.top:
+        #     ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
+        #     ball.speed_y *= -1
+        # else:
+        #     if ball.x - player.x > 0:
+        #         if ball.rect.left > player.rect.right:
+        #             ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
+        #         ball.speed_x *= -1
+        #     else:
+        #         if ball.rect.right > player.rect.left:
+        #             ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
+        #         ball.speed_x *= -1
+
+
+
 
     # When the player loses a life
     if not alive:
@@ -133,20 +191,24 @@ while is_running:
             player.move_size *= 1.1
             score += 10 * level
             if enemy[0].power_up:
+                if enemy[0].power_up == powerups[0]:
+                    player.has_powerup = True
+                    change_width(player, 100)
                 enemy[0].power_up = None
                 power_up_present = False
         if not enemy[2]:
             if speed_counter == enemy_speed:
                 enemy[0].animate()
                 speed_counter = 0
-                if not enemy[0].power_up and not power_up_present:
+                # Implement Longer bat
+                if not enemy[0].power_up and not power_up_present and not player.has_powerup:
                     random_number = randint(1, 10)
                     if random_number % 3 == 0:
                         # Calculate which powerup to assign and assign it to the enemy
-                        power_up_pos = random_number % len(powerups)
-                        enemy[0].power_up = powerups[power_up_pos - 1]
+                        # power_up_pos = random_number % len(powerups)
+                        # enemy[0].power_up = powerups[power_up_pos - 1]
+                        enemy[0].power_up = "longer bat"
                         power_up_present = True
-
             else:
                 speed_counter += 1
 
