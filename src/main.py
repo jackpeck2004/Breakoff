@@ -6,14 +6,14 @@ from utils.classes import RectSprite, RoundedRectSprite, CircleSprite, TextEleme
 from utils.constants import *
 
 
-def reset_powerups(player, power_ups_present):
+def reset_powerups(player):
     player.has_powerup = False
     player.width = player_width
     player.height = player_height
     player.rect.width = player_width
     player.rect.height = player_height
 
-    return not power_ups_present
+    return False
 
 
 def change_width(rect, size):
@@ -91,6 +91,8 @@ power_up_present = False
 # Main game loop
 while is_running:
 
+    print(power_up_present)
+
     # Handle Input
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -108,10 +110,10 @@ while is_running:
     alive = ball.animation
     player.animate()
 
-    if power_up_present and player.has_powerup:
+    if player.has_powerup:
         if counter >= limit:
+            print(counter)
             counter = 0
-            power_up_present = reset_powerups(player, power_up_present)
         else:
             counter += 1
 
@@ -121,40 +123,14 @@ while is_running:
     while player.rect.colliderect(ball.rect):
         collision = True
         ball.setXY(ball.x - ball.speed_x / 4, ball.y - ball.speed_y / 4)
-        # # If the ball hits the top of the bat it bounces off
-        # if ball.rect.bottom > player.rect.top:
-        #     ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
-        #     # ball.speed_y *= -1
-        # else:
-        #     if ball.x - player.x > 0:
-        #         if ball.rect.left > player.rect.right:
-        #             ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
-        #         # ball.speed_x *= -1
-        #     else:
-        #         if ball.rect.right > player.rect.left:
-        #             ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
-        #         # ball.speed_x *= -1
     if collision:
         collision = False
+        # If the ball hits from the top then bounce it back up
         if ball.rect.right >= player.rect.left and ball.rect.left <= player.rect.right:
             ball.speed_y *= -1
+        # Else bounce it to the left or the right
         else:
             ball.speed_x *= -1
-        # if ball.rect.bottom > player.rect.top:
-        #     ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
-        #     ball.speed_y *= -1
-        # else:
-        #     if ball.x - player.x > 0:
-        #         if ball.rect.left > player.rect.right:
-        #             ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
-        #         ball.speed_x *= -1
-        #     else:
-        #         if ball.rect.right > player.rect.left:
-        #             ball.setXY(ball.x - ball.speed_x / 2, ball.y - ball.speed_y / 2)
-        #         ball.speed_x *= -1
-
-
-
 
     # When the player loses a life
     if not alive:
@@ -203,7 +179,7 @@ while is_running:
                 # Implement Longer bat
                 if not enemy[0].power_up and not power_up_present and not player.has_powerup:
                     random_number = randint(1, 10)
-                    if random_number % 3 == 0:
+                    if random_number % 2 == 0:
                         # Calculate which powerup to assign and assign it to the enemy
                         # power_up_pos = random_number % len(powerups)
                         # enemy[0].power_up = powerups[power_up_pos - 1]

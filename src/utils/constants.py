@@ -29,4 +29,4 @@ enemy_speed = 1
 text_y = 20
 
 counter: int = 0
-limit: int = 10
+limit: int = 100
