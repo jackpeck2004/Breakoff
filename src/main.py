@@ -6,12 +6,12 @@ from utils.classes import RectSprite, RoundedRectSprite, CircleSprite, TextEleme
 from utils.constants import *
 
 
-def reset_powerups(player):
-    player.has_powerup = False
-    player.width = player_width
-    player.height = player_height
-    player.rect.width = player_width
-    player.rect.height = player_height
+def reset_powerups(local_player):
+    local_player.has_powerup = False
+    local_player.width = player_width
+    local_player.height = player_height
+    local_player.rect.width = player_width
+    local_player.rect.height = player_height
 
     return False
 
