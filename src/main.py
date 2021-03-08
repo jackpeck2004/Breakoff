@@ -91,7 +91,7 @@ power_up_present = False
 # Main game loop
 while is_running:
 
-    print(power_up_present)
+    # print(power_up_present)
 
     # Handle Input
     for event in pygame.event.get():
@@ -112,7 +112,7 @@ while is_running:
 
     if player.has_powerup:
         if counter >= limit:
-            print(counter)
+            # print(counter)
             counter = 0
         else:
             counter += 1
@@ -204,5 +204,5 @@ while is_running:
     clock.tick(60)
     pygame.display.flip()
 
-print("Score:", score)
+print(f"Score: {score}")
 pygame.quit()

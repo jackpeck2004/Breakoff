@@ -132,7 +132,7 @@ class CircleSprite(MasterSprite):
 
     def draw(self, surface, color):
         pygame.draw.circle(surface, color,
-                           (self.x, self.y), self.diameter // 2)
+                           (int(self.x), int(self.y)), self.diameter // 2)
 
     @property
     def animation(self) -> bool:
